@@ -10,6 +10,6 @@ class APIClient:  # создаем класс
             response.raise_for_status()  # вызывает ошибку если запрос завершился ошибкой 404 или 500
             return response.json() #преобразовает ответ в формат json() и возвращает его 
         except requests.RequestException as e: # переъватывает ошибки 
-           print(f"Error during API request: {e}") #выводит в ответ если находит ошбку
+           print(f"Error during API request: {e}") #выводит в ответ если находит ошибку
         return None 
 
