@@ -32,3 +32,5 @@ if __name__ == '__main__':
     user_data = UserData(api_url, num_users)
     users = user_data.fetch_users()
     print(users)
+  
+   
