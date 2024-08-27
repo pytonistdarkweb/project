@@ -4,7 +4,7 @@ class APIClient:  # создаем класс
     def __init__(self, base_url):  #конструктор 
         self.base_url = base_url #создаем атрибут класса 
     @staticmethod
-    def get(url,results=1):
+    def get(url ,results=1):
         try:
             response = requests.get(url, params={'results': results}) #вы полняют get запрос 
             response.raise_for_status()  # вызывает ошибку если запрос завершился ошибкой 404 или 500
