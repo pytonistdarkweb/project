@@ -7,7 +7,7 @@ class UserData: # СОЗДАЕМ КЛАСС
         self.api_client = APIClient(self.url) # СОЗДАЕТ ЭКЗЕМПЛЯР КЛАССА (APIClient) ДЛЯ РАБОТЫ С НИМ 
 
     def fetch_users(self):
-        users = []  #СОЗДАЕМ ПУСТОЙ СПИСОК ДЛЯ ДАЛЬНЕЙШЕЙ РАБОТЫ С НИМ
+        users = []#СОЗДАЕМ ПУСТОЙ СПИСОК ДЛЯ ДАЛЬНЕЙШЕЙ РАБОТЫ С НИМ
         while len(users) < self.count:  #СОЗДАЕМ ЦИКЛ КОТОРЫЙ БУДЕТ РАБОТАТЬ ДО ТОГО ПОКА ДЛИНА СПИСКА НЕ ДОСТИГНЕТ ЗНАЧЕНИЯ (COUNT)
             result = self.api_client.get("https://randomuser.me/api/", results=self.count - len(users))  #ЗАПРАШИВАЕТ У API КОЛЛИЧЕСТВО ОСТАВШИХСЯ ПОЛЬЗОВАТЕЛЕЙ 
             if result:  #ПРОВЕРЯЕТ ЯВЛЯЕТСЯ ЛИ ПУСТОЙ ПЕРЕМЕННАЯ 
@@ -25,12 +25,14 @@ class UserData: # СОЗДАЕМ КЛАСС
                 break
         return users  # ВОЗВРАЩАЕТ СПИСОК ПОЛЬЗОВАТЕЛЕЙ 
 
-if __name__ == '__main__':
-    api_url = "https://randomuser.me/api/"
-    num_users = 5  # количество пользователей для получения
+
+api_url = "https://randomuser.me/api/"
+num_users = 5  # количество пользователей для получения
     
-    user_data = UserData(api_url, num_users)
-    users = user_data.fetch_users()
-    print(users)
-  
+user_data = UserData(api_url, num_users)
+global users
+users = user_data.fetch_users()
+    # print(users)
+print(users)
+
    

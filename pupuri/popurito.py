@@ -1,4 +1,7 @@
 import os
+import requests
+from user_data import users
+
 
 
 class FileFunctions:
@@ -13,7 +16,7 @@ class FileFunctions:
         if not file_format.startswith('.'):
             print("Неверный формат файла.")
             return
-        content = input("Введите текст, который хотите записать в файл: ")
+        content = users
         with open(os.path.join(self.directory, file_name), 'w') as f:
             f.write(content)
         print("Файл успешно создан.")
