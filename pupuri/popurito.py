@@ -16,43 +16,46 @@ class FileFunctions:
         if not file_format.startswith('.'):
             print("Неверный формат файла.")
             return
-        content = users
-        with open(os.path.join(self.directory, file_name), 'w') as f:
-            f.write(content)
+        # content = users 
+        result_string = ""
+        for dictionary in users:
+            result_string += str(dictionary) + "\n"
+        with open(os.path.join(self.directory, file_name), 'w', encoding='utf-8') as f:
+            f.write(result_string)
         print("Файл успешно создан.")
     
     def read_file(self):
-        file_name1 = input("Введите имя файла, который хотите прочитать: ")
+        file_name = input("Введите имя файла, который хотите прочитать: ")
         if not os.path.isfile(os.path.join(self.directory, file_name1)): 
             print("Файл не найден.")
             return  
-        with open(os.path.join(self.directory, file_name1), 'r') as f:
+        with open(os.path.join(self.directory, file_name), 'r') as f:
             content = f.read()
         print("Содержимое файла: ")
         print(content)
     
     def update_file(self):
-        file_name2 = input("Введите имя файла, который хотите обновить: ")
-        if not os.path.isfile(os.path.join(self.directory, file_name2)):
+        file_name = input("Введите имя файла, который хотите обновить: ")
+        if not os.path.isfile(os.path.join(self.directory, file_name)):
             print("Файл не найден.")
             return
         new_content = input("Введите новый текст для записи: ")
-        with open(os.path.join(self.directory, file_name2), 'w') as f:
+        with open(os.path.join(self.directory, file_name), 'w') as f:
             f.write(new_content)
         print("Файл успешно обновлен.")
         
     def delete_file(self):
-        file_name3 = input("Введите имя файла, который хотите удалить: ")
-        if not os.path.isfile(os.path.join(self.directory, file_name3)):
+        file_name = input("Введите имя файла, который хотите удалить: ")
+        if not os.path.isfile(os.path.join(self.directory, file_name)):
             print("Файл не найден.")
             return
-        os.remove(os.path.join(self.directory, file_name3))
+        os.remove(os.path.join(self.directory, file_name))
         print("Файл успешно удален.")
 
 
 class CommandInterface:
     def __init__(self,directory):
-        self.file_manager= FileFunctions(directory)
+        self.file_manager = FileFunctions(directory)
     
     
     def run(self):
